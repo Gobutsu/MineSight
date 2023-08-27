@@ -1,0 +1,4 @@
+httpx
+rich
+beautifulsoup4
+jsonpath_ng

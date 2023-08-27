@@ -1,0 +1,551 @@
+[
+    {
+        "name": "Funcraft",
+        "url": "https://www.funcraft.net/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchURL",
+                "profileExistsValue": "https://www.funcraft.net/fr/joueur/",
+                "requestUrl": "https://www.funcraft.net/fr/joueurs?q={username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": ".info-entry:nth-child(1) span",
+                        "type": "date",
+                        "dateFormats": ["relative", "DD Month YYYY"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": ".info-entry:nth-child(2) span",
+                        "type": "date",
+                        "dateFormats": ["relative", "DD Month YYYY"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Crafty",
+        "url": "https://crafty.gg/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://crafty.gg/players/{username}.json",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Location :earth_africa:",
+                        "selectorOrPath": "$.location"
+                    },
+                    {
+                        "name": "Bio :clipboard:",
+                        "selectorOrPath": "$.bio"
+                    },
+                    {
+                        "name": "Socials :link:",
+                        "selectorOrPath": "$.socials"
+                    },
+                    {
+                        "name": "Username history :pencil:",
+                        "selectorOrPath": "$.usernames"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Jartex Network",
+        "url": "https://jartexnetwork.com/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://stats.jartexnetwork.com/api/profile/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.lastSeen",
+                        "type": "date",
+                        "dateFormats": ["timestamp"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Nations Glory",
+        "url": "https://nationsglory.fr/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://nationsglory.fr/profile/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": ".d-flex > .d-flex > p.small.text-muted:first-of-type",
+                        "contentMatch": "Membre depuis le (.*?) ·",
+                        "type": "date",
+                        "dateFormats": ["relative", "DD Month YYYY"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": ".d-flex > .d-flex > p.small.text-muted:first-of-type",
+                        "contentMatch": "Dernière connexion (.*?)$",
+                        "type": "date",
+                        "dateFormats": ["relative", "DD Month YYYY"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Rinaorc",
+        "url": "https://rinaorc.com/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://old.rinaorc.com/player/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "#stats .col-md-6:nth-child(2) h5",
+                        "type": "date",
+                        "dateFormats": ["DD/MM/YY à HH:mm", "relative"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "#stats .col-md-6:nth-child(1) h5",
+                        "type": "date",
+                        "dateFormats": ["DD/MM/YY à HH:mm", "relative"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Hypixel",
+        "url": "https://hypixel.net/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://karma-25.uc.r.appspot.com/player/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "$.player.firstLogin",
+                        "type": "date",
+                        "dateFormats": ["timestamp"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.player.lastLogin",
+                        "type": "date",
+                        "dateFormats": ["timestamp"]
+                    },
+                    {
+                        "name": "Socials :link:",
+                        "selectorOrPath": "$.player.socialMedia.links"
+                    },
+                    {
+                        "name": "User language :earth_africa:",
+                        "selectorOrPath": "$.player.userLanguage"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Erisium",
+        "url": "https://erisium.com/",
+        "requests": [
+            {
+                "responseType": "nextJson",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://erisium.com/player/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "$.player.statistics.firstConnection"
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.player.statistics.lastConnection"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "MCSkinHistory",
+        "url": "https://mcskinhistory.com/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://mcskinhistory.com/player/{uuid}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Username history :pencil:",
+                        "selectorOrPath": "tr"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "PikaNetwork",
+        "url": "https://pika-network.net/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://stats.pika-network.net/api/profile/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.lastSeen",
+                        "type": "date",
+                        "dateFormats": ["timestamp"]
+                    },
+                    {
+                        "name": "Discord verified :question:",
+                        "selectorOrPath": "$.discord_verified"
+                    },
+                    {
+                        "name": "Email verified :question:",
+                        "selectorOrPath": "$.email_verified"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Wynncraft",
+        "url": "https://wynncraft.com/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://web-api.wynncraft.com/api/v3/player/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "$.meta.firstJoin",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DDTHH:mm:ss.SSSZ"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.meta.lastJoin",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DDTHH:mm:ss.SSSZ"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Icarya",
+        "url": "https://icarya.fr/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchBodyError",
+                "profileExistsValue": "A PHP Error was encountered",
+                "requestUrl": "https://www.icarya.fr/joueur/general/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "tr:nth-child(3) td:nth-child(2)",
+                        "type": "date",
+                        "dateFormats": ["DD/MM/YYYY HH:mm:ss"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "PvpGym",
+        "url": "https://pvpgym.net/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://pvpgym.net/profile/{username}/__data.json",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "$.nodes[1].data[9]"
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.nodes[1].data[10]"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "HelloMinecraft",
+        "url": "https://www.hellominecraft.fr/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchBodyError",
+                "profileExistsValue": "Ce joueur n'a pas été aperçu récemment|Erreur : Joueur introuvable",
+                "requestUrl": "https://hellominecraft.fr/stats-perso-{username}.html",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "#content > p:nth-child(4) > em:nth-child(4)",
+                        "contentMatch": "le (.*?)$",
+                        "type": "date",
+                        "dateFormats": ["DD/MM/YYYY à HH:mm"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Battle Adventure",
+        "url": "https://www.battle-adventure.eu/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://www.battle-adventure.eu/stats/ajax/?call=allPlayers&page=0&search={username}",
+                "fields": [],
+                "passToSubRequest": "$.data[0].uuid",
+                "subRequest": {
+                    "responseType": "html",
+                    "profileExistsType": "status",
+                    "profileExistsValue": "200",
+                    "requestUrl": "https://www.battle-adventure.eu/stats/player/{subParameter}/",
+                    "isProfileUrl": true,
+                    "fields": [
+                        {
+                            "name": "Last seen :eye:",
+                            "selectorOrPath": "main .container .row",
+                            "contentMatch": "Vu dernièrement Date (.*? .*?) ",
+                            "type": "date",
+                            "dateFormats": ["HH:mm DD-MM-YY"]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "MCBans",
+        "url": "https://www.mcbans.com/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://www.mcbans.com/player/{uuid}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Sanctions history :hammer:",
+                        "selectorOrPath": "table tbody tr"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "StoneWorks",
+        "url": "https://stoneworks.gg/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchBodyError",
+                "profileExistsValue": "has not joined before",
+                "requestUrl": "https://www.stoneworks.gg/bans/history.php?uuid={uuid}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Sanctions history :hammer:",
+                        "selectorOrPath": "tbody tr"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "OPBlocks",
+        "url": "https://opblocks.com/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchBodyError",
+                "profileExistsValue": "Player not found in database.",
+                "requestUrl": "https://opblocks.com/bans/history.php?uuid={dash_uuid}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Sanctions history :hammer:",
+                        "selectorOrPath": "tbody tr"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Cosmic Prisons",
+        "url": "https://cosmicprisons.com/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "jsonEmptyError",
+                "requestUrl": "https://bans-api.cosmic.games/prisons/player/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Sanctions history :hammer:",
+                        "selectorOrPath": "$"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "MCBrawl",
+        "url": "https://www.mcbrawl.com/",
+        "requests": [
+            {
+                "responseType": "html",
+                "profileExistsType": "matchBodyError",
+                "profileExistsValue": "Search for a player...",
+                "requestUrl": "https://www.mcbrawl.com/players/{username}",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "tr:nth-child(2) td:nth-child(2)",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DD HH:mm:ss"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "tr:nth-child(3) td:nth-child(2)",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DD HH:mm:ss"]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "Pactify",
+        "url": "https://pactify.fr/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://www.pactify.fr/api/player/search?name={username}",
+                "headers": {
+                    "Authorization": "Bearer b506d88fb3691c547397c12e0ec6550a",
+                    "Cookie": "_sid=184e28423ca.u8AvXsoDlSDmFk9Q"
+                },
+                "fields": [],
+                "passToSubRequest": "$.current",
+                "subRequest": {
+                    "responseType": "json",
+                    "profileExistsType": "status",
+                    "profileExistsValue": "200",
+                    "requestUrl": "https://www.pactify.fr/api/player/{subParameter}",
+                    "isProfileUrl": true,
+                    "headers": {
+                        "Authorization": "Bearer b506d88fb3691c547397c12e0ec6550a",
+                        "Cookie": "_sid=184e28423ca.u8AvXsoDlSDmFk9Q"
+                    },
+                    "fields": [
+                        {
+                            "name": "First joined :calendar:",
+                            "selectorOrPath": "$.registrationDate",
+                            "type": "date",
+                            "dateFormats": ["YYYY-MM-DDTHH:mm:ssZ"]
+                        },
+                        {
+                            "name": "Last seen :eye:",
+                            "selectorOrPath": "$.lastActivityDate",
+                            "type": "date",
+                            "dateFormats": ["YYYY-MM-DDTHH:mm:ssZ"]
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    {
+        "name": "Labymod",
+        "url": "https://www.labymod.net/",
+        "requests": [
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://laby.net/api/v2/user/{uuid}/get-profile",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "Username history :pencil:",
+                        "selectorOrPath": "$.username_history"
+                    }
+                ]
+            },
+            {
+                "responseType": "json",
+                "profileExistsType": "status",
+                "profileExistsValue": "200",
+                "requestUrl": "https://laby.net/api/user/{uuid}/get-game-stats",
+                "isProfileUrl": true,
+                "fields": [
+                    {
+                        "name": "First joined :calendar:",
+                        "selectorOrPath": "$.first_joined",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DD", "YYYY"]
+                    },
+                    {
+                        "name": "Last seen :eye:",
+                        "selectorOrPath": "$.last_online",
+                        "type": "date",
+                        "dateFormats": ["YYYY-MM-DD"]
+                    }
+                ]
+            }
+        ]
+    }
+]
